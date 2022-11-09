@@ -44,7 +44,7 @@ export default function Leadership() {
 							{links ? (
 								<div className="mt-4 mb-2 grid grid-flow-row md:grid-flow-col md:grid-cols-4 justify-center">
 									{links.map(({title, link}) => {
-										return <a key={title} className="text-white cursor-pointer md:mr-5 border-solid border-[#161b22] border-3 rounded-md my-2 md:my-0 py-2 px-7 md:px-3 bg-gray-800 text-center md:w-11/12 overflow-ellipsis z-50" href={link} target="_blank" rel="noreferrer">{title}</a>
+										return <a key={title} className="text-white cursor-pointer md:mr-5 border-solid border-[#161b22] border-3 rounded-md my-2 md:my-0 py-2 px-7 md:px-3 bg-gray-800 text-center md:w-11/12 overflow-ellipsis" href={link} target="_blank" rel="noreferrer">{title}</a>
 									})}
 								</div>
 							):(
