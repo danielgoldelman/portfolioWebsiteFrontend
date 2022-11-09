@@ -1,5 +1,5 @@
 const landingDb = {
-	title: "Hello my name is Danishka",
+	title: "Hello, my name is Daniel",
 	desc: "I am a software developer with a passion for finding solutions to today's problems by using technology to build streamlined and innovative products.",
 };
 
@@ -20,8 +20,8 @@ export default function Landing() {
 	};
 
 	return (
-		<div className="h-screen flex flex-col justify-center w-8/12">
-			<div className="text-3xl mb-3">{landingDb.title}</div>
+		<div className="h-screen flex flex-col justify-center lg:w-8/12">
+			<div className="text-5xl mb-5">{landingDb.title}</div>
 			<div className="text-lg">{landingDb.desc}</div>
 
 			<div className="text-xl py-8 items-center mt-20">

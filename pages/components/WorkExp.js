@@ -1,119 +1,55 @@
-const workExperience = [
-	{
-		emp: "Privacy-Tech-Lab",
-		title: "Technical Product Manager and Research Assistant",
-		desc: "Project developed a browser extension that informs users of invasive procedures on the web and what data is being collected by the websites that they visit. Major funding from Google's Research Scholar Program.",
-		cont: [
-			{
-				thing:
-					"Managing SCRUM meetings, A/B tests, wireframes and product roadmaps",
-			},
-			{
-				thing:
-					"Developing systems to detect browser fingerprinting, cross site tracking, and invasive procedures through analysis of HTTP requests",
-			},
-			{
-				thing:
-					"Developing machine learning BERT sequence classification models using Huggingface, pytorch, tensorflowjs, learning distillation and multi-labeling to create browser-based ML models",
-			},
-			{
-				thing:
-					"Co-authoring manuscript with Professor S. Zimmeck (Wesleyan CS) and three other members of the privacy-tech-lab",
-			},
-		],
-	},
-	{
-		emp: "Teaching Assistant - Computer Science II",
-		title: "Teaching Assistant",
-
-		cont: [
-			{
-				thing:
-					"Teaching data structures and algorithms in functional programming languages",
-			},
-			{
-				thing:
-					"Instructing 40+ Computer Science II students on CS fundamentals",
-			},
-		],
-	},
-	{
-		emp: "OurCampus Wesleyan",
-		title: "Frontend Lead Developer",
-		desc: "OurCampus is a cross-platform mobile app and SPA  distributing current dining options, professor reviews, and campus events to the Wesleyan community",
-		cont: [
-			{
-				thing: "Reviewed all pull requests and pushed frontend code",
-			},
-			{
-				thing: "Led frontend team discussions and assigned tasks",
-			},
-			{
-				thing: "Hosted Flutter/Dart/React/Git workshops",
-			},
-			{
-				thing:
-					"Rebuilt and optimized frontend and created internal tools for database population",
-			},
-		],
-	},
-	{
-		emp: "Peer Tutor - Software Engineering",
-		title: "Peer Tutor",
-
-		cont: [
-			{
-				thing:
-					"Assisting COMP 333 students with understanding OOP fundamentals and principals",
-			},
-			{
-				thing: "Teaching the use of HTML, CSS, JS, React, Django, MySQL, PHP",
-			},
-		],
-	},
-	{
-		emp: "IDEAS (Engineering) Lab Assistant",
-		title: "Lab Assistant",
-
-		cont: [
-			{
-				thing: "Responsible for maintaining the IDEAS (Engineering) Lab",
-			},
-			{
-				thing:
-					"Assisted students with classwork and personal projects using laser cutters, 3D printers, SolidWorks, Adobe Illustrator, and Cura",
-			},
-		],
-	},
-];
+import { useState, useEffect } from "react";
 
 export default function WorkExp() {
+	const [workExps, setWorkExps] = useState([]);
+
+	useEffect(() => {
+		fetch(`https://website-api-dg.herokuapp.com/workExps`)
+		.then((response) => {
+			if (!response.ok) {
+			  throw new Error(
+				`This is an HTTP error: The status is ${response.status}`
+			  );
+			}
+			return response.json();
+		  })
+		  .then((actualData) => setWorkExps(actualData))
+		  .catch((err) => {
+			console.log(err.message);
+		  });
+	  }, []);
+
 	return (
 		<div className="min-h-screen py-8">
 			<div className="text-4xl font-medium">Work Experience</div>
-			{workExperience.map(({ emp, title, desc, cont }) => {
+			{workExps.map(({ id, title, workplace, description, contribution, links }) => {
 				return (
-					<div className="my-8 bg-[#0d1117]">
+					<div key={id} className="my-8 bg-[#0d1117]">
 						<div className="bg-[#161b22] p-4 border-[0.1px] rounded-t-xl">
-							<div className="text-xl font-medium">{emp}</div>
+							<div className="text-xl font-medium">{workplace}</div>
 							<div className="text-base font-normal">{title}</div>
 						</div>
 						<div className="p-4 border-x-[0.1px] border-b-[0.1px] rounded-b-xl">
-							{desc ? (
-								<div className="my-3 italic text-slate-100">{desc}</div>
+							{description ? (
+								<div className="mt-1 mb-2 italic text-slate-100">{description}</div>
 							) : (
 								<></>
 							)}
-							<div>
-								{cont.map(({ thing }) => {
-									return <div className="pl-4">∙ {thing}</div>;
-								})}
-							</div>
-							<div className="py-8">
-								<a className="text-[#58a6ff] transition ease-in duration-300 hover:scale-125 cursor-pointer">
-									Demo
-								</a>
-							</div>
+							{contribution ? (contribution.map(({ thing }) => {
+								return <div key={thing} className="pl-4">∙ {thing}</div>;
+							})
+							):(
+								<></>
+							)}
+							{links ? (
+								<div className="mt-4 mb-2 grid grid-flow-row md:grid-flow-col md:grid-cols-4 justify-center">
+									{links.map(({title, link}) => {
+										return <a key={title} className="text-white cursor-pointer md:mr-5 border-solid border-[#161b22] border-3 rounded-md my-2 md:my-0 py-2 px-7 md:px-3 bg-gray-800 text-center md:w-11/12 overflow-ellipsis" href={link} target="_blank" rel="noreferrer">{title}</a>
+									})}
+								</div>
+							):(
+								<></>
+							)}
 						</div>
 					</div>
 				);

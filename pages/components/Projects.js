@@ -1,101 +1,56 @@
-const projectDb = [
-	{
-		name: "Privacy Pioneer",
-		relatedTo: "Privacy-Tech-Lab",
-		desc: "Privacy Pioneer is a browser extension that informs users of invasive procedures on the web and what data is being collected by the websites that they visit. Major funding from Google's Research Scholar Program.",
-		links: [
-			"https://github.com/privacy-tech-lab/privacy-pioneer",
-			"https://github.com/privacy-tech-lab/privacy-pioneer-machine-learning",
-			"https://www.youtube.com/watch?v=emENqmVxi7k",
-		],
-	},
-	{
-		name: "OurCampus",
-		relatedTo: "OurCampus Wesleyan",
-		desc: "OurCampus is a cross-platform mobile app and SPA  distributing current dining options, professor reviews, and campus events to the Wesleyan community",
-		links: ["https://apps.apple.com/us/app/ourcampuswes/id1447905927"],
-	},
-	{
-		name: "WesHack",
-		relatedTo: "WesHack",
-		desc: "WesHack is a school wide hackathon open to all skill levels that incorporates coding, workshops, and alumni presentations to display the efforts of the Wesleyan coding and tech community.",
-		links: [
-			"https://weshack.devpost.com/",
-			"http://wesleyanargus.com/2021/05/07/weshack-hosts-weekend-long-programming-competition/",
-		],
-	},
-	{
-		name: "Gender Diversity in Video Marketing ML Algorithm",
-		relatedTo: "Wesleyan University",
-		desc: "The goal of this research was to determine how online advertising of selected alcohol brands correlates to the public perception of these brands.",
-		links: [
-			{
-				actionText: "",
-				link: "https://colab.research.google.com/drive/1EnPBBTenO1uiQ80Ql8rK94gbsrbGDFW7",
-			},
-		],
-	},
-	{
-		name: "Gold Vinyl",
-		relatedTo: "Wesleyan University",
-		desc: "Gold Vinyl is a music streaming, rating, distribution, and discussion platform.",
-		links: [],
-	},
-];
-
-const projects = [
-	{
-		name: "Privacy Pioneer",
-		relatedTo: "Privacy-Tech-Lab",
-		desc: "Privacy Pioneer is a browser extension that informs users of invasive procedures on the web and what data is being collected by the websites that they visit. Major funding from Google's Research Scholar Program.",
-		links: [
-			"https://github.com/privacy-tech-lab/privacy-pioneer",
-			"https://github.com/privacy-tech-lab/privacy-pioneer-machine-learning",
-			"https://www.youtube.com/watch?v=emENqmVxi7k",
-		],
-	},
-	{
-		name: "OurCampus",
-		relatedTo: "OurCampus Wesleyan",
-		desc: "OurCampus is a cross-platform mobile app and SPA  distributing current dining options, professor reviews, and campus events to the Wesleyan community",
-		links: ["https://apps.apple.com/us/app/ourcampuswes/id1447905927"],
-	},
-	{
-		name: "WesHack",
-		relatedTo: "WesHack",
-		desc: "WesHack is a school wide hackathon open to all skill levels that incorporates coding, workshops, and alumni presentations to display the efforts of the Wesleyan coding and tech community.",
-		links: [
-			"https://weshack.devpost.com/",
-			"http://wesleyanargus.com/2021/05/07/weshack-hosts-weekend-long-programming-competition/",
-		],
-	},
-	{
-		name: "Gender Diversity in Video Marketing ML Algorithm",
-		relatedTo: "Wesleyan University",
-		desc: "The goal of this research was to determine how online advertising of selected alcohol brands correlates to the public perception of these brands.",
-		links: [
-			"https://colab.research.google.com/drive/1EnPBBTenO1uiQ80Ql8rK94gbsrbGDFW7",
-		],
-	},
-	{
-		name: "Gold Vinyl",
-		relatedTo: "Wesleyan University",
-		desc: "Gold Vinyl is a music streaming, rating, distribution, and discussion platform.",
-		links: [],
-	},
-];
+import { useState, useEffect } from "react";
 
 export default function Projects() {
+	const [projects, setProjects] = useState([]);
+
+	useEffect(() => {
+		fetch(`https://website-api-dg.herokuapp.com/projects`)
+		.then((response) => {
+			if (!response.ok) {
+			  throw new Error(
+				`This is an HTTP error: The status is ${response.status}`
+			  );
+			}
+			return response.json();
+		  })
+		  .then((actualData) => setProjects(actualData))
+		  .catch((err) => {
+			console.log(err.message);
+		  });
+	  }, []);
+
 	return (
 		<div className="min-h-screen py-8">
-			<div className="text-4xl font-medium">Projects</div>
-
-			{projectDb.map(({ name, relatedTo, desc, links }) => {
+			<div className="text-4xl font-medium">Other Projects</div>
+			{projects.map(({ id, title, workplace, description, contribution, links }) => {
 				return (
-					<div className="py-12 px-8 border my-8 bg-[#0d1117]">
-						<div className="text-xl font-semibold">{name}</div>
-						<div className="text-base font-medium">{relatedTo}</div>
-						{desc ? <div className="my-3 italic">{desc}</div> : <></>}
+					<div key={id} className="my-8 bg-[#0d1117]">
+						<div className="bg-[#161b22] p-4 border-[0.1px] rounded-t-xl">
+							<div className="text-xl font-medium">{workplace}</div>
+							<div className="text-base font-normal">{title}</div>
+						</div>
+						<div className="p-4 border-x-[0.1px] border-b-[0.1px] rounded-b-xl">
+							{description ? (
+								<div className="mt-1 mb-2 italic text-slate-100">{description}</div>
+							) : (
+								<></>
+							)}
+							{contribution ? (contribution.map(({ thing }) => {
+								return <div key={thing} className="pl-4">∙ {thing}</div>;
+							})
+							):(
+								<></>
+							)}
+							{links ? (
+								<div className="mt-4 mb-2 grid grid-flow-row md:grid-flow-col md:grid-cols-4 justify-center">
+									{links.map(({title, link}) => {
+										return <a key={title} className="text-white cursor-pointer md:mr-5 border-solid border-[#161b22] border-3 rounded-md my-2 md:my-0 py-2 px-7 md:px-3 bg-gray-800 text-center md:w-11/12 overflow-ellipsis" href={link} target="_blank" rel="noreferrer">{title}</a>
+									})}
+								</div>
+							):(
+								<></>
+							)}
+						</div>
 					</div>
 				);
 			})}
