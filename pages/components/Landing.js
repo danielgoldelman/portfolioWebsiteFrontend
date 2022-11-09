@@ -29,7 +29,7 @@ export default function Landing() {
 					className="flex space-x-4 items-center cursor-pointer group rounded-lg text-[#58a6ff] w-fit"
 					onClick={handleResume}
 				>
-					<div className="group-hover:scale-105 transition ease-in duration-300">
+					<div className="group-hover:scale-105 transition ease-in duration-300 z-50">
 						Download Resume
 					</div>
 					<svg
