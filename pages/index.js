@@ -10,7 +10,7 @@ import MiniMe from "./components/MiniMe.svg"
 
 export default function Home() {
 	return (
-		<div className="bg-[#0d1117] overscroll-contain">
+		<div className="bg-[#0d1117] overscroll-contain text-white">
 			<Head>
 				<title>Daniel Goldelman</title>
 				<meta name="description" content="Daniel Goldelman's Portfolio Website" />
