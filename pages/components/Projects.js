@@ -1,23 +1,69 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
 export default function Projects() {
-	const [projects, setProjects] = useState([]);
+	// const [projects, setProjects] = useState([]);
 
-	useEffect(() => {
-		fetch(`https://website-api-dg.herokuapp.com/projects`)
-		.then((response) => {
-			if (!response.ok) {
-			  throw new Error(
-				`This is an HTTP error: The status is ${response.status}`
-			  );
-			}
-			return response.json();
-		  })
-		  .then((actualData) => setProjects(actualData))
-		  .catch((err) => {
-			console.log(err.message);
-		  });
-	  }, []);
+	// useEffect(() => {
+	// 	fetch(`https://website-api-dg.herokuapp.com/projects`)
+	// 	.then((response) => {
+	// 		if (!response.ok) {
+	// 		  throw new Error(
+	// 			`This is an HTTP error: The status is ${response.status}`
+	// 		  );
+	// 		}
+	// 		return response.json();
+	// 	  })
+	// 	  .then((actualData) => setProjects(actualData))
+	// 	  .catch((err) => {
+	// 		console.log(err.message);
+	// 	  });
+	//   }, []);
+
+	const projects = [
+		{
+			"ID":          "1",
+			"Title":       "WesHack",
+			"Workplace":   "WesHack",
+			"Description": "WesHack is a school wide hackathon open to all skill levels that incorporates coding, workshops, and alumni presentations to display the efforts of the Wesleyan coding and tech community.",
+			"Contribution": [
+				{"thing": "Reinstated school-wide hackathon with 60+ participants on 15+ teams"},
+				{"thing": "Secured judges, mentors, speakers, and obtained funding from the University and outside supporters"},
+				{"thing": "Led daily coding workshops and community-building exercises during the event"},
+				{"thing": "Managed budget and disbursed funding and prizes"},
+			],
+			"Links": [
+				{
+					"title": "Resulting Projects",
+					"link":  "https://weshack.devpost.com/",
+				},
+				{
+					"title": "Wesleyan's Argus Article",
+					"link":  "http://wesleyanargus.com/2021/05/07/weshack-hosts-weekend-long-programming-competition/",
+				},
+			],
+		},
+		{
+			"ID":           "2",
+			"Title":        "Gender Diversity in Video Marketing ML Algorithm",
+			"Workplace":    "Wesleyan University",
+			"Description":  "The goal of this research was to determine how online advertising of selected alcohol brands correlates to the public perception of these brands.",
+			"Contribution": [],
+			"Links": [
+				{
+					"title": "Google Colab Link",
+					"link":  "https://colab.research.google.com/drive/1EnPBBTenO1uiQ80Ql8rK94gbsrbGDFW7",
+				},
+			],
+		},
+		{
+			"ID":           "3",
+			"Title":        "Gold Vinyl",
+			"Workplace":    "Wesleyan Univeristy",
+			"Description":  "Gold Vinyl is a CRUD (Django), web (React.js), and mobile (React Mobile) music streaming, rating, distribution, and discussion platform.",
+			"Contribution": [],
+			"Links":        [],
+		},
+	]
 
 	return (
 		<div className="min-h-screen py-8">
