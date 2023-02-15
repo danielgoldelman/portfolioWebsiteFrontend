@@ -32,15 +32,15 @@ export default function Leadership() {
 			],
 			"Links": [
 				{
-					"Title": "Code_Wes GitHub",
+					"title": "Code_Wes GitHub",
 					"link":  "https://github.com/danielgoldelman/Code_Wes",
 				},
 				{
-					"Title": "WesNest Listing",
+					"title": "WesNest Listing",
 					"link":  "https://wesleyan.campuslabs.com/engage/organization/code_wes",
 				},
 				{
-					"Title": "Code_Wes Instagram",
+					"title": "Code_Wes Instagram",
 					"link":  "https://www.instagram.com/code_wes/",
 				},
 			],
@@ -71,29 +71,29 @@ export default function Leadership() {
     return (
 		<div className="min-h-screen py-8">
 			<div className="text-4xl font-medium">Leadership Experience</div>
-			{leadership.map(({ ID, title, workplace, description, contribution, links }) => {
+			{leadership.map(({ ID, Title, Workplace, Description, Contribution, Links }) => {
 				return (
-					<div key={"ID"} className="my-8 bg-[#0d1117]">
+					<div key={ID} className="my-8 bg-[#0d1117]">
 						<div className="bg-[#161b22] p-4 border-[0.1px] rounded-t-xl">
-							<div className="text-xl font-medium">{workplace}</div>
-							<div className="text-base font-normal">{title}</div>
+							<div className="text-xl font-medium">{Workplace}</div>
+							<div className="text-base font-normal">{Title}</div>
 						</div>
 						<div className="p-4 border-x-[0.1px] border-b-[0.1px] rounded-b-xl">
-							{description ? (
-								<div className="mt-1 mb-2 italic text-slate-100">{description}</div>
+							{Description ? (
+								<div className="mt-1 mb-2 italic text-slate-100">{Description}</div>
 							) : (
 								<></>
 							)}
-                            {contribution ? (contribution.map(({ thing }) => {
+                            {Contribution ? (Contribution.map(({ thing }) => {
                                 return <div key={thing} className="pl-4">∙ {thing}</div>;
                             })
                             ):(
                                 <></>
                             )}
-							{links ? (
+							{Links ? (
 								<div className="mt-4 mb-2 grid grid-flow-row md:grid-flow-col md:grid-cols-4 justify-center">
-									{links.map(({Title, link}) => {
-										return <a key={"Title"} className="text-white cursor-pointer md:mr-5 border-solid border-[#161b22] border-3 rounded-md my-2 md:my-0 py-2 px-7 md:px-3 bg-gray-800 text-center md:w-11/12 overflow-ellipsis" href={link} target="_blank" rel="noreferrer">{Title}</a>
+									{Links.map(({title, link}) => {
+										return <a key={"Title"} className="text-white cursor-pointer md:mr-5 border-solid border-[#161b22] border-3 rounded-md my-2 md:my-0 py-2 px-7 md:px-3 bg-gray-800 text-center md:w-11/12 overflow-ellipsis" href={link} target="_blank" rel="noreferrer">{title}</a>
 									})}
 								</div>
 							):(

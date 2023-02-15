@@ -33,15 +33,15 @@ export default function WorkExp() {
 			],
 			"Links": [
 				{
-					"Title": "Extension Source Code",
+					"title": "Extension Source Code",
 					"link":  "https://github.com/privacy-tech-lab/privacy-pioneer",
 				},
 				{
-					"Title": "Machine Learning Repo",
+					"title": "Machine Learning Repo",
 					"link":  "https://github.com/privacy-tech-lab/privacy-pioneer-machine-learning",
 				},
 				{
-					"Title": "Presentation to Google",
+					"title": "Presentation to Google",
 					"link":  "https://www.youtube.com/watch?v=emENqmVxi7k",
 				},
 			],
@@ -59,11 +59,11 @@ export default function WorkExp() {
 			],
 			"Links": [
 				{
-					"Title": "Landing Page",
+					"title": "Landing Page",
 					"link":  "https://about.ourcampuswes.org/",
 				},
 				{
-					"Title": "Apple App Store Page",
+					"title": "Apple App Store Page",
 					"link":  "https://apps.apple.com/us/app/ourcampuswes/id1447905927?ign-itscg=30200&ign-itsct=apps_box_badge",
 				},
 			],
@@ -106,29 +106,29 @@ export default function WorkExp() {
 	return (
 		<div className="min-h-screen py-8">
 			<div className="text-4xl font-medium">Work Experience</div>
-			{workExps.map(({ id, title, workplace, description, contribution, links }) => {
+			{workExps.map(({ ID, Title, Workplace, Description, Contribution, Links }) => {
 				return (
-					<div key={id} className="my-8 bg-[#0d1117]">
+					<div key={ID} className="my-8 bg-[#0d1117]">
 						<div className="bg-[#161b22] p-4 border-[0.1px] rounded-t-xl">
-							<div className="text-xl font-medium">{workplace}</div>
-							<div className="text-base font-normal">{title}</div>
+							<div className="text-xl font-medium">{Workplace}</div>
+							<div className="text-base font-normal">{Title}</div>
 						</div>
 						<div className="p-4 border-x-[0.1px] border-b-[0.1px] rounded-b-xl">
-							{description ? (
-								<div className="mt-1 mb-2 italic text-slate-100">{description}</div>
+							{Description ? (
+								<div className="mt-1 mb-2 italic text-slate-100">{Description}</div>
 							) : (
 								<></>
 							)}
-							{contribution ? (contribution.map(({ thing }) => {
+							{Contribution ? (Contribution.map(({ thing }) => {
 								return <div key={thing} className="pl-4">∙ {thing}</div>;
 							})
 							):(
 								<></>
 							)}
-							{links ? (
+							{Links ? (
 								<div className="mt-4 mb-2 grid grid-flow-row md:grid-flow-col md:grid-cols-4 justify-center">
-									{links.map(({Title, link}) => {
-										return <a key={Title} className="text-white cursor-pointer md:mr-5 border-solid border-[#161b22] border-3 rounded-md my-2 md:my-0 py-2 px-7 md:px-3 bg-gray-800 text-center md:w-11/12 overflow-ellipsis" href={link} target="_blank" rel="noreferrer">{Title}</a>
+									{Links.map(({title, link}) => {
+										return <a key={title} className="text-white cursor-pointer md:mr-5 border-solid border-[#161b22] border-3 rounded-md my-2 md:my-0 py-2 px-7 md:px-3 bg-gray-800 text-center md:w-11/12 overflow-ellipsis" href={link} target="_blank" rel="noreferrer">{title}</a>
 									})}
 								</div>
 							):(
