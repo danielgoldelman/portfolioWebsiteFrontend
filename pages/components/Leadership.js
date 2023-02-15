@@ -19,7 +19,7 @@ export default function Leadership() {
 	// 	  });
 	//   }, []);
 
-	var leadership = [
+	const leadership = [
 		{
 			"ID":          "1",
 			"Title":       "Co-Founder, President, Finance Manager",
@@ -64,7 +64,7 @@ export default function Leadership() {
 			"Contribution": [
 				{"thing": "Scheduling practices and performances coordinated with the university's music department and various student groups"},
 			],
-			"Links": {},
+			"Links": [],
 		}
 	]
 
