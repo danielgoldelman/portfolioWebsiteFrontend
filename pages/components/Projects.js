@@ -33,11 +33,11 @@ export default function Projects() {
 			],
 			"Links": [
 				{
-					"title": "Resulting Projects",
+					"Title": "Resulting Projects",
 					"link":  "https://weshack.devpost.com/",
 				},
 				{
-					"title": "Wesleyan's Argus Article",
+					"Title": "Wesleyan's Argus Article",
 					"link":  "http://wesleyanargus.com/2021/05/07/weshack-hosts-weekend-long-programming-competition/",
 				},
 			],
@@ -50,7 +50,7 @@ export default function Projects() {
 			"Contribution": [],
 			"Links": [
 				{
-					"title": "Google Colab Link",
+					"Title": "Google Colab Link",
 					"link":  "https://colab.research.google.com/drive/1EnPBBTenO1uiQ80Ql8rK94gbsrbGDFW7",
 				},
 			],

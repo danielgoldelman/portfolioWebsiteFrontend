@@ -33,15 +33,15 @@ export default function WorkExp() {
 			],
 			"Links": [
 				{
-					"title": "Extension Source Code",
+					"Title": "Extension Source Code",
 					"link":  "https://github.com/privacy-tech-lab/privacy-pioneer",
 				},
 				{
-					"title": "Machine Learning Repo",
+					"Title": "Machine Learning Repo",
 					"link":  "https://github.com/privacy-tech-lab/privacy-pioneer-machine-learning",
 				},
 				{
-					"title": "Presentation to Google",
+					"Title": "Presentation to Google",
 					"link":  "https://www.youtube.com/watch?v=emENqmVxi7k",
 				},
 			],
@@ -59,11 +59,11 @@ export default function WorkExp() {
 			],
 			"Links": [
 				{
-					"title": "Landing Page",
+					"Title": "Landing Page",
 					"link":  "https://about.ourcampuswes.org/",
 				},
 				{
-					"title": "Apple App Store Page",
+					"Title": "Apple App Store Page",
 					"link":  "https://apps.apple.com/us/app/ourcampuswes/id1447905927?ign-itscg=30200&ign-itsct=apps_box_badge",
 				},
 			],
