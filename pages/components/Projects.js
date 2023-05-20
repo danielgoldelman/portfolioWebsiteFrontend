@@ -44,6 +44,19 @@ export default function Projects() {
 		},
 		{
 			"ID":           "2",
+			"Title":        "Personal Project",
+			"Workplace":    "DG Whisk(e)y",
+			"Description":  "Website dedicated to my love of whiskey.",
+			"Contribution": [],
+			"Links": [
+				{
+					"title": "Website Link",
+					"link":  "https://dgwhiskey.vercel.app/",
+				},
+			],
+		},
+		{
+			"ID":           "3",
 			"Title":        "Gender Diversity in Video Marketing ML Algorithm",
 			"Workplace":    "Wesleyan University",
 			"Description":  "The goal of this research was to determine how online advertising of selected alcohol brands correlates to the public perception of these brands.",
@@ -56,7 +69,7 @@ export default function Projects() {
 			],
 		},
 		{
-			"ID":           "3",
+			"ID":           "4",
 			"Title":        "Gold Vinyl",
 			"Workplace":    "Wesleyan Univeristy",
 			"Description":  "Gold Vinyl is a CRUD (Django), web (React.js), and mobile (React Mobile) music streaming, rating, distribution, and discussion platform.",
